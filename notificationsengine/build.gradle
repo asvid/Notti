@@ -1,8 +1,9 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         minSdkVersion 16
@@ -29,3 +30,7 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+
+group = 'io.github.asvid.notificationsengine'
+version = '0.0.1'
