@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NotificationsEngineExample.iml" filepath="$PROJECT_DIR$/NotificationsEngineExample.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notificationsengine/notificationsengine.iml" filepath="$PROJECT_DIR$/notificationsengine/notificationsengine.iml" />
     </modules>
   </component>
 </project>
