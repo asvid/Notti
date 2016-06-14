@@ -7,7 +7,7 @@ buildscript {
     }
 }
 
-group = 'io.github.asvid.notificationsengine'
+group = 'com.github.asvid.notificationsengine'
 version = '0.0.1'
 
 apply plugin: 'com.android.library'
