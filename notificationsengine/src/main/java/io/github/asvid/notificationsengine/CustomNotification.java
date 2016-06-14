@@ -10,20 +10,20 @@ public class CustomNotification {
     private String title;
     private String txt;
     private ArrayList<NotificationAction> actions;
-    private int icon;
+    private Integer icon;
 
     public CustomNotification(String title, String txt) {
         this.title = title;
         this.txt = txt;
     }
 
-    public CustomNotification(String title, String txt, int icon) {
+    public CustomNotification(String title, String txt, Integer icon) {
         this.title = title;
         this.txt = txt;
         this.icon = icon;
     }
 
-    public CustomNotification(String title, String txt, ArrayList<NotificationAction> actions, int icon) {
+    public CustomNotification(String title, String txt, ArrayList<NotificationAction> actions, Integer icon) {
         this.title = title;
         this.txt = txt;
         this.actions = actions;
@@ -42,7 +42,7 @@ public class CustomNotification {
         return actions;
     }
 
-    public int getIcon() {
+    public Integer getIcon() {
         return icon;
     }
 }

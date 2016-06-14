@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        notificationsEngine = new NotificationsEngine(this, new NotificationConf(R.mipmap.ic_launcher));
+        notificationsEngine = new NotificationsEngine(this, new NotificationConf(R.drawable.ic_stat_name));
 
         notificationsEngine.show(new CustomNotification("some text", "some content"));
     }
