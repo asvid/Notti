@@ -1,0 +1,31 @@
+sudo: false
+language: android
+
+env:
+  global:
+      MALLOC_ARENA_MAX=2
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-23.0.2
+    - android-23
+    - extra-google-m2repository
+    - extra-android-m2repository
+
+addons:
+  apt_packages:
+    - pandoc
+
+script: ./gradlew build
+
+
+after_failure:
+  - pandoc app/build/reports/tests/release/index.html -t plain | sed -n '/^Failed tests/,/default-package/p'
+  - pandoc notificationsengine/build/reports/tests/release/index.html -t plain | sed -n '/^Failed tests/,/default-package/p'
+
+
+after_script:
+- for f in "app/build/outputs/lint-results*.html"; do pandoc $f -t plain; done
+- for f in "notificationsengine/build/outputs/lint-results*.html"; do pandoc $f -t plain; done
