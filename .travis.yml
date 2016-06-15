@@ -25,6 +25,8 @@ after_failure:
   - pandoc app/build/reports/tests/release/index.html -t plain | sed -n '/^Failed tests/,/default-package/p'
   - pandoc notificationsengine/build/reports/tests/release/index.html -t plain | sed -n '/^Failed tests/,/default-package/p'
 
+after_success:
+- ./gradlew connectedAndroidTest coveralls
 
 after_script:
 - for f in "app/build/outputs/lint-results*.html"; do pandoc $f -t plain; done
