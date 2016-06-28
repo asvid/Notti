@@ -11,6 +11,7 @@ public class CustomNotification {
     private String txt;
     private ArrayList<NotificationAction> actions;
     private Integer icon;
+    private int ID;
 
     public CustomNotification(String title, String txt) {
         this.title = title;
@@ -28,6 +29,27 @@ public class CustomNotification {
         this.txt = txt;
         this.actions = actions;
         this.icon = icon;
+    }
+
+    public CustomNotification(String title, String txt, ArrayList<NotificationAction> actions, Integer icon, int ID) {
+        this.title = title;
+        this.txt = txt;
+        this.actions = actions;
+        this.icon = icon;
+        this.ID = ID;
+    }
+
+    public CustomNotification(String title, String txt, int ID) {
+        this.title = title;
+        this.txt = txt;
+        this.ID = ID;
+    }
+
+    public CustomNotification(String title, String txt, Integer icon, int ID) {
+        this.title = title;
+        this.txt = txt;
+        this.icon = icon;
+        this.ID = ID;
     }
 
     public String getTitle() {

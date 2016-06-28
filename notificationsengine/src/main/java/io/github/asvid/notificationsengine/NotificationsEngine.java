@@ -4,6 +4,9 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by adam on 14.06.16.
  */
@@ -12,6 +15,8 @@ public class NotificationsEngine {
     private Context context;
     private NotificationConf notificationConf;
     private NotificationManager notificationManager;
+    private Map<String, Integer> ids = new HashMap<>();
+    private int currentID = 0;
 
     public NotificationsEngine(Context context, NotificationConf notificationConf) {
         this.context = context;
@@ -26,7 +31,7 @@ public class NotificationsEngine {
                 .setContentTitle(customNotification.getTitle())
                 .setContentText(customNotification.getTxt());
         setActionsForNotification(mBuilder, customNotification);
-        notificationManager.notify(0, mBuilder.build());
+        notificationManager.notify(getNotificationID(), mBuilder.build());
     }
 
     private int provideIcon(Integer icon) {
@@ -42,5 +47,21 @@ public class NotificationsEngine {
                 builder.addAction(provideIcon(notificationAction.getImage()), notificationAction.getText(), notificationAction.getPendingIntent());
             }
         }
+    }
+
+    public int getNotificationID() {
+        if (!notificationConf.isSameID()) {
+            return currentID++;
+        }
+        return 0;
+    }
+
+    public int getIDbyString(String string) {
+        return ids.get(string);
+    }
+
+    public void putID(String string) {
+        // TODO: 28.06.16 maybe take random and check if already exists?
+        ids.put(string, getNotificationID());
     }
 }
