@@ -1,11 +1,13 @@
 package io.github.asvid.notificationsengine;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.support.v4.app.NotificationCompat;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import io.github.asvid.notificationsengine.notifications.CustomNotification;
 
 /**
  * Created by adam on 14.06.16.
@@ -21,17 +23,24 @@ public class NotificationsEngine {
     public NotificationsEngine(Context context, NotificationConf notificationConf) {
         this.context = context;
         this.notificationConf = notificationConf;
-        this.notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        this.notificationManager = (NotificationManager) context
+                .getSystemService(Context.NOTIFICATION_SERVICE);
     }
 
     public void show(CustomNotification customNotification) {
-        Notification.Builder mBuilder = new Notification.Builder(context)
-                .setSmallIcon(provideIcon(customNotification.getIcon()))
-                .setAutoCancel(true)
-                .setContentTitle(customNotification.getTitle())
-                .setContentText(customNotification.getTxt());
-        setActionsForNotification(mBuilder, customNotification);
-        notificationManager.notify(getNotificationID(), mBuilder.build());
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+        setBuilderWithConfig(builder);
+        customNotification.setBuilder(builder);
+        setActionsForNotification(builder, customNotification);
+        setContentIntent(customNotification, builder);
+        notificationManager.notify(getNotificationID(), builder.build());
+    }
+
+    private void setContentIntent(CustomNotification customNotification,
+            NotificationCompat.Builder builder) {
+        if (customNotification.getContentAction() != null) {
+            builder.setContentIntent(customNotification.getContentAction().getPendingIntent());
+        }
     }
 
     private int provideIcon(Integer icon) {
@@ -41,10 +50,12 @@ public class NotificationsEngine {
         return icon;
     }
 
-    private void setActionsForNotification(Notification.Builder builder, CustomNotification customNotification) {
+    private void setActionsForNotification(NotificationCompat.Builder builder,
+            CustomNotification customNotification) {
         if (customNotification.getActions() != null) {
             for (NotificationAction notificationAction : customNotification.getActions()) {
-                builder.addAction(provideIcon(notificationAction.getImage()), notificationAction.getText(), notificationAction.getPendingIntent());
+                builder.addAction(provideIcon(notificationAction.getImage()),
+                        notificationAction.getText(), notificationAction.getPendingIntent());
             }
         }
     }
@@ -63,5 +74,9 @@ public class NotificationsEngine {
     public void putID(String string) {
         // TODO: 28.06.16 maybe take random and check if already exists?
         ids.put(string, getNotificationID());
+    }
+
+    public void setBuilderWithConfig(NotificationCompat.Builder builder) {
+        builder.setSmallIcon(notificationConf.getDefaultActionImage());
     }
 }
