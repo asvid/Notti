@@ -23,14 +23,24 @@ public class NotificationsEngine {
     public NotificationsEngine(Context context, NotificationConf notificationConf) {
         this.context = context;
         this.notificationConf = notificationConf;
-        this.notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        this.notificationManager = (NotificationManager) context
+                .getSystemService(Context.NOTIFICATION_SERVICE);
     }
 
     public void show(CustomNotification customNotification) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         setBuilderWithConfig(builder);
-        setActionsForNotification(customNotification.setBuilder(builder), customNotification);
+        customNotification.setBuilder(builder);
+        setActionsForNotification(builder, customNotification);
+        setContentIntent(customNotification, builder);
         notificationManager.notify(getNotificationID(), builder.build());
+    }
+
+    private void setContentIntent(CustomNotification customNotification,
+            NotificationCompat.Builder builder) {
+        if (customNotification.getContentAction() != null) {
+            builder.setContentIntent(customNotification.getContentAction().getPendingIntent());
+        }
     }
 
     private int provideIcon(Integer icon) {
@@ -40,10 +50,12 @@ public class NotificationsEngine {
         return icon;
     }
 
-    private void setActionsForNotification(NotificationCompat.Builder builder, CustomNotification customNotification) {
+    private void setActionsForNotification(NotificationCompat.Builder builder,
+            CustomNotification customNotification) {
         if (customNotification.getActions() != null) {
             for (NotificationAction notificationAction : customNotification.getActions()) {
-                builder.addAction(provideIcon(notificationAction.getImage()), notificationAction.getText(), notificationAction.getPendingIntent());
+                builder.addAction(provideIcon(notificationAction.getImage()),
+                        notificationAction.getText(), notificationAction.getPendingIntent());
             }
         }
     }

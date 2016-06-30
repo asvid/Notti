@@ -3,9 +3,9 @@ package io.github.asvid.notificationsengine.notifications;
 import android.graphics.Bitmap;
 import android.support.v4.app.NotificationCompat;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import io.github.asvid.notificationsengine.ContentAction;
 import io.github.asvid.notificationsengine.NotificationAction;
 
 /**
@@ -19,7 +19,7 @@ public interface CustomNotification {
 
     CustomNotification setIcon(int icon);
 
-    CustomNotification setActions(ArrayList<NotificationAction> actions);
+    CustomNotification setActions(List<NotificationAction> actions);
 
     CustomNotification setId(int ID);
 
@@ -32,4 +32,14 @@ public interface CustomNotification {
     CustomNotification setBigPicture(Bitmap picture);
 
     CustomNotification setLargeIcon(Bitmap image);
+
+    CustomNotification addInboxItem(String item);
+
+    CustomNotification setInboxSummary(String item);
+
+    CustomNotification setInboxItems(List<String> itemList);
+
+    CustomNotification setContentAction(ContentAction contentAction);
+
+    ContentAction getContentAction();
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,29 +14,31 @@
         android:id="@+id/simpleNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="simple notification"/>
+        android:text="simple notification" />
+
+    <Button
+        android:id="@+id/simpleNotificationActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="simple notification with actions" />
+
 
     <Button
         android:id="@+id/bigTextNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="big text notification"/>
+        android:text="big text notification" />
 
     <Button
         android:id="@+id/inboxNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="inbox notification"/>
+        android:text="inbox notification" />
 
     <Button
         android:id="@+id/bigPictureNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="big picture notification"/>
+        android:text="big picture notification" />
 
-    <Button
-        android:id="@+id/mediaNotification"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="media notification"/>
 </LinearLayout>

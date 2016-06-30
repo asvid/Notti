@@ -14,6 +14,11 @@ public class NotificationAction {
     private int image;
     private Context context;
 
+    public NotificationAction(Intent intent, Context context) {
+        this.intent = intent;
+        this.context = context;
+    }
+
     public NotificationAction(String text, Intent intent, Context context) {
         this.text = text;
         this.intent = intent;
@@ -30,7 +35,7 @@ public class NotificationAction {
     public PendingIntent getPendingIntent() {
 
         PendingIntent pendingIntent;
-        pendingIntent = PendingIntent.getService(context, getRequestCode(), intent, 0);
+        pendingIntent = PendingIntent.getActivity(context, getRequestCode(), intent, 0);
         return pendingIntent;
     }
 

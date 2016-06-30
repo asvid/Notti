@@ -15,7 +15,7 @@ public class InboxNotification extends BaseNotification {
     public NotificationCompat.Builder setBuilder(NotificationCompat.Builder builder) {
         builder.setContentTitle(title).setContentText(content);
         setBuilderIcon(builder);
-
+        setInboxStyle(builder);
         return builder;
     }
 
@@ -23,5 +23,16 @@ public class InboxNotification extends BaseNotification {
         if (icon != null) {
             builder.setSmallIcon(icon);
         }
+    }
+
+    public void setInboxStyle(NotificationCompat.Builder builder) {
+        NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
+        for (String item : inboxItems) {
+            style.addLine(item);
+        }
+        if (inboxSummary != null) {
+            style.setSummaryText(inboxSummary);
+        }
+        builder.setStyle(style);
     }
 }
