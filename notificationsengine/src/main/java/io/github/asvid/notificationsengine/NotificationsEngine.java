@@ -33,7 +33,33 @@ public class NotificationsEngine {
         customNotification.setBuilder(builder);
         setActionsForNotification(builder, customNotification);
         setContentIntent(customNotification, builder);
+        setVibratePattern(customNotification, builder);
+        setDiode(customNotification, builder);
         notificationManager.notify(getNotificationID(), builder.build());
+    }
+
+    private void setDiode(CustomNotification customNotification,
+            NotificationCompat.Builder builder) {
+        NotificationConf.LightSettings lightSettings = notificationConf.getLightSettings();
+        NotificationConf.LightSettings customLightSettings = customNotification.getLightSettings();
+        if (lightSettings != null) {
+            builder.setLights(lightSettings.getArgb(), lightSettings.getOnMs(),
+                    lightSettings.getOffMs());
+        } else if (customLightSettings != null) {
+            builder.setLights(customLightSettings.getArgb(), customLightSettings.getOnMs(),
+                    customLightSettings.getOffMs());
+        }
+    }
+
+    private void setVibratePattern(CustomNotification customNotification,
+            NotificationCompat.Builder builder) {
+        long[] pattern = customNotification.getVibrationPattern();
+        long[] confPattern = notificationConf.getVibrationPattern();
+        if (pattern != null) {
+            builder.setVibrate(pattern);
+        } else if (confPattern != null) {
+            builder.setVibrate(notificationConf.getVibrationPattern());
+        }
     }
 
     private void setContentIntent(CustomNotification customNotification,

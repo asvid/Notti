@@ -7,6 +7,7 @@ import java.util.List;
 
 import io.github.asvid.notificationsengine.ContentAction;
 import io.github.asvid.notificationsengine.NotificationAction;
+import io.github.asvid.notificationsengine.NotificationConf;
 
 /**
  * Created by adam on 29.06.16.
@@ -42,4 +43,12 @@ public interface CustomNotification {
     CustomNotification setContentAction(ContentAction contentAction);
 
     ContentAction getContentAction();
+
+    CustomNotification setVibrationPattern(long[] pattern);
+
+    long[] getVibrationPattern();
+
+    NotificationConf.LightSettings getLightSettings();
+
+    CustomNotification setLightSettings(NotificationConf.LightSettings lightSettings);
 }
