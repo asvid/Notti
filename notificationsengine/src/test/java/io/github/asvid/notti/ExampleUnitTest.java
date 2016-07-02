@@ -1,4 +1,4 @@
-package io.github.asvid.notificationsengine;
+package io.github.asvid.notti;
 
 import org.junit.Test;
 

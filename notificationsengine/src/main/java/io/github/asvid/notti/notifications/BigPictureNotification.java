@@ -1,12 +1,9 @@
-package io.github.asvid.notificationsengine.notifications;
+package io.github.asvid.notti.notifications;
 
 import android.support.v4.app.NotificationCompat;
 
-/**
- * Created by adam on 29.06.16.
- */
-public class InboxNotification extends BaseNotification {
-    public InboxNotification(String title, String content) {
+public class BigPictureNotification extends BaseNotification {
+    public BigPictureNotification(String title, String content) {
         this.title = title;
         this.content = content;
     }
@@ -15,7 +12,7 @@ public class InboxNotification extends BaseNotification {
     public NotificationCompat.Builder setBuilder(NotificationCompat.Builder builder) {
         builder.setContentTitle(title).setContentText(content);
         setBuilderIcon(builder);
-        setInboxStyle(builder);
+        setBigPictureStyle(builder);
         return builder;
     }
 
@@ -25,13 +22,13 @@ public class InboxNotification extends BaseNotification {
         }
     }
 
-    public void setInboxStyle(NotificationCompat.Builder builder) {
-        NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
-        for (String item : inboxItems) {
-            style.addLine(item);
+    public void setBigPictureStyle(NotificationCompat.Builder builder) {
+        NotificationCompat.BigPictureStyle style = new NotificationCompat.BigPictureStyle();
+        if (bigPicture != null) {
+            style.bigPicture(bigPicture);
         }
-        if (inboxSummary != null) {
-            style.setSummaryText(inboxSummary);
+        if (largeImage != null) {
+            builder.setLargeIcon(largeImage);
         }
         builder.setStyle(style);
     }

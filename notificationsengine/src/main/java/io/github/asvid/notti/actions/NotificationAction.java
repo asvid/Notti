@@ -1,12 +1,9 @@
-package io.github.asvid.notificationsengine.actions;
+package io.github.asvid.notti.actions;
 
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
-/**
- * Created by adam on 14.06.16.
- */
 public class NotificationAction {
 
     private String text;

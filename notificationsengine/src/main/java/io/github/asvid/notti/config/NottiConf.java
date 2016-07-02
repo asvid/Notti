@@ -1,26 +1,23 @@
-package io.github.asvid.notificationsengine.config;
+package io.github.asvid.notti.config;
 
-/**
- * Created by adam on 14.06.16.
- */
-public class NotificationConf {
+public class NottiConf {
 
     private int defaultActionImage;
     private boolean sameID = false;
     private LightSettings lightSettings;
     private VibrationSettings vibrationSettings;
 
-    public NotificationConf(int defaultActionImage) {
+    public NottiConf(int defaultActionImage) {
         this.defaultActionImage = defaultActionImage;
     }
 
-    public NotificationConf(int defaultActionImage, VibrationSettings vibrationSettings) {
+    public NottiConf(int defaultActionImage, VibrationSettings vibrationSettings) {
         this.defaultActionImage = defaultActionImage;
         this.sameID = sameID;
         this.vibrationSettings = vibrationSettings;
     }
 
-    public NotificationConf(int defaultActionImage, VibrationSettings vibrationSettings,
+    public NottiConf(int defaultActionImage, VibrationSettings vibrationSettings,
             LightSettings lightSettings) {
         this.defaultActionImage = defaultActionImage;
         this.sameID = sameID;
@@ -36,7 +33,7 @@ public class NotificationConf {
         return sameID;
     }
 
-    public NotificationConf setSameID(boolean sameID) {
+    public NottiConf setSameID(boolean sameID) {
         this.sameID = sameID;
         return this;
     }

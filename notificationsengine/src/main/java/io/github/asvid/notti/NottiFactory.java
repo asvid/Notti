@@ -1,15 +1,12 @@
-package io.github.asvid.notificationsengine;
+package io.github.asvid.notti;
 
-import io.github.asvid.notificationsengine.notifications.BIgTextNotification;
-import io.github.asvid.notificationsengine.notifications.BigPictureNotification;
-import io.github.asvid.notificationsengine.notifications.CustomNotification;
-import io.github.asvid.notificationsengine.notifications.InboxNotification;
-import io.github.asvid.notificationsengine.notifications.StandardNotification;
+import io.github.asvid.notti.notifications.BIgTextNotification;
+import io.github.asvid.notti.notifications.BigPictureNotification;
+import io.github.asvid.notti.notifications.CustomNotification;
+import io.github.asvid.notti.notifications.InboxNotification;
+import io.github.asvid.notti.notifications.StandardNotification;
 
-/**
- * Created by adam on 29.06.16.
- */
-public class NotificationsFactory {
+public class NottiFactory {
 
     public enum TYPE {INBOX, BIG_TEXT, BIG_PICTURE, STANDARD}
 
@@ -27,5 +24,4 @@ public class NotificationsFactory {
                 return new StandardNotification(title, content);
         }
     }
-
 }

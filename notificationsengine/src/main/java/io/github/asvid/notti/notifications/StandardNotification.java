@@ -1,10 +1,7 @@
-package io.github.asvid.notificationsengine.notifications;
+package io.github.asvid.notti.notifications;
 
 import android.support.v4.app.NotificationCompat;
 
-/**
- * Created by adam on 29.06.16.
- */
 public class StandardNotification extends BaseNotification {
 
     public StandardNotification(String title, String content) {

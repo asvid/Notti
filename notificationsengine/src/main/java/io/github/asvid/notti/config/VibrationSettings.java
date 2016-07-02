@@ -1,4 +1,4 @@
-package io.github.asvid.notificationsengine.config;
+package io.github.asvid.notti.config;
 
 public class VibrationSettings {
 

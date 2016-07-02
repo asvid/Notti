@@ -1,4 +1,4 @@
-package io.github.asvid.notificationsengine;
+package io.github.asvid.notti;
 
 import android.app.NotificationManager;
 import android.content.Context;
@@ -7,26 +7,23 @@ import android.support.v4.app.NotificationCompat;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.asvid.notificationsengine.actions.NotificationAction;
-import io.github.asvid.notificationsengine.config.LightSettings;
-import io.github.asvid.notificationsengine.config.NotificationConf;
-import io.github.asvid.notificationsengine.config.VibrationSettings;
-import io.github.asvid.notificationsengine.notifications.CustomNotification;
+import io.github.asvid.notti.actions.NotificationAction;
+import io.github.asvid.notti.config.LightSettings;
+import io.github.asvid.notti.config.NottiConf;
+import io.github.asvid.notti.config.VibrationSettings;
+import io.github.asvid.notti.notifications.CustomNotification;
 
-/**
- * Created by adam on 14.06.16.
- */
-public class NotificationsEngine {
+public class Notti {
 
     private Context context;
-    private NotificationConf notificationConf;
+    private NottiConf nottiConf;
     private NotificationManager notificationManager;
     private Map<String, Integer> ids = new HashMap<>();
     private int currentID = 0;
 
-    public NotificationsEngine(Context context, NotificationConf notificationConf) {
+    public Notti(Context context, NottiConf nottiConf) {
         this.context = context;
-        this.notificationConf = notificationConf;
+        this.nottiConf = nottiConf;
         this.notificationManager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
     }
@@ -44,7 +41,7 @@ public class NotificationsEngine {
 
     private void setVibrations(CustomNotification customNotification,
             NotificationCompat.Builder builder) {
-        VibrationSettings vibrationSettings = notificationConf.getVibrationSettings();
+        VibrationSettings vibrationSettings = nottiConf.getVibrationSettings();
         VibrationSettings customVibrationSettings = customNotification.getVibrationSettings();
         if (vibrationSettings != null && vibrationSettings.isVibrate()) {
             builder.setVibrate(vibrationSettings.getPattern());
@@ -55,7 +52,7 @@ public class NotificationsEngine {
 
     private void setDiode(CustomNotification customNotification,
             NotificationCompat.Builder builder) {
-        LightSettings lightSettings = notificationConf.getLightSettings();
+        LightSettings lightSettings = nottiConf.getLightSettings();
         LightSettings customLightSettings = customNotification.getLightSettings();
         if (lightSettings != null) {
             builder.setLights(lightSettings.getArgb(), lightSettings.getOnMs(),
@@ -75,7 +72,7 @@ public class NotificationsEngine {
 
     private int provideIcon(Integer icon) {
         if (null == icon) {
-            return notificationConf.getDefaultActionImage();
+            return nottiConf.getDefaultActionImage();
         }
         return icon;
     }
@@ -91,7 +88,7 @@ public class NotificationsEngine {
     }
 
     public int getNotificationID() {
-        if (!notificationConf.isSameID()) {
+        if (!nottiConf.isSameID()) {
             return currentID++;
         }
         return 0;
@@ -107,6 +104,6 @@ public class NotificationsEngine {
     }
 
     public void setBuilderWithConfig(NotificationCompat.Builder builder) {
-        builder.setSmallIcon(notificationConf.getDefaultActionImage());
+        builder.setSmallIcon(nottiConf.getDefaultActionImage());
     }
 }

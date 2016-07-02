@@ -1,18 +1,15 @@
-package io.github.asvid.notificationsengine.notifications;
+package io.github.asvid.notti.notifications;
 
 import android.graphics.Bitmap;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.asvid.notificationsengine.actions.ContentAction;
-import io.github.asvid.notificationsengine.actions.NotificationAction;
-import io.github.asvid.notificationsengine.config.LightSettings;
-import io.github.asvid.notificationsengine.config.VibrationSettings;
+import io.github.asvid.notti.actions.ContentAction;
+import io.github.asvid.notti.actions.NotificationAction;
+import io.github.asvid.notti.config.LightSettings;
+import io.github.asvid.notti.config.VibrationSettings;
 
-/**
- * Created by adam on 29.06.16.
- */
 public abstract class BaseNotification implements CustomNotification {
 
     public String title;
