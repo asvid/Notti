@@ -1,8 +1,6 @@
 # Notti 
 [![Build Status](https://travis-ci.org/asvid/Notti.svg?branch=master)](https://travis-ci.org/asvid/Notti)
 [![](https://jitpack.io/v/asvid/Notti.svg)](https://jitpack.io/#asvid/Notti)
-<a href="http://www.methodscount.com/?lib=com.github.asvid%3ANotti%3A0.0.5"><img src="https://img.shields.io/badge/Methods and size-49 | 7 KB-e91e63.svg"/></a>
-
 
 Simple library for making quick notifications. After initialisation with config, all notifications will be displayed with same icon, light and vibrations unless you state different for specific notification. 
 Every type of notification has same configurable options including vibrations, light settings, icon etc. For details please check usage examples.
