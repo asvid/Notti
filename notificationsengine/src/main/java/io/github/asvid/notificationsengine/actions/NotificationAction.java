@@ -39,6 +39,10 @@ public class NotificationAction {
         this.image = image;
     }
 
+    public NotificationAction(PendingIntent pendingIntent) {
+        this.pendingIntent = pendingIntent;
+    }
+
     public PendingIntent getPendingIntent() {
         if (pendingIntent != null) {
             return pendingIntent;

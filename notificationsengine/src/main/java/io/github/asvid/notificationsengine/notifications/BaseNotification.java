@@ -26,7 +26,6 @@ public abstract class BaseNotification implements CustomNotification {
     public Bitmap largeImage;
     public List<String> inboxItems = new ArrayList<>();
     public String inboxSummary;
-    public long[] vibrationPattern;
     public LightSettings lightSettings;
     public VibrationSettings vibrationSettings;
 
@@ -110,17 +109,6 @@ public abstract class BaseNotification implements CustomNotification {
     @Override
     public ContentAction getContentAction() {
         return contentAction;
-    }
-
-    @Override
-    public CustomNotification setVibrationPattern(long[] pattern) {
-        this.vibrationPattern = pattern;
-        return this;
-    }
-
-    @Override
-    public long[] getVibrationPattern() {
-        return vibrationPattern;
     }
 
     @Override

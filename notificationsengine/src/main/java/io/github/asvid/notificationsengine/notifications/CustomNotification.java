@@ -45,10 +45,6 @@ public interface CustomNotification {
 
     ContentAction getContentAction();
 
-    CustomNotification setVibrationPattern(long[] pattern);
-
-    long[] getVibrationPattern();
-
     LightSettings getLightSettings();
 
     CustomNotification setLightSettings(LightSettings lightSettings);

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         notificationsEngine = new NotificationsEngine(this,
-                new NotificationConf(R.drawable.ic_stat_name, false,
+                new NotificationConf(R.drawable.ic_stat_name,
                         new VibrationSettings(VibrationSettings.STD_VIBRATION),
                         new LightSettings(Color.BLUE)));
     }

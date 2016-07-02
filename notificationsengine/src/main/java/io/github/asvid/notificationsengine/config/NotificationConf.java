@@ -14,20 +14,14 @@ public class NotificationConf {
         this.defaultActionImage = defaultActionImage;
     }
 
-    public NotificationConf(int defaultActionImage, boolean sameID) {
-        this.defaultActionImage = defaultActionImage;
-        this.sameID = sameID;
-    }
-
-    public NotificationConf(int defaultActionImage, boolean sameID,
-            VibrationSettings vibrationSettings) {
+    public NotificationConf(int defaultActionImage, VibrationSettings vibrationSettings) {
         this.defaultActionImage = defaultActionImage;
         this.sameID = sameID;
         this.vibrationSettings = vibrationSettings;
     }
 
-    public NotificationConf(int defaultActionImage, boolean sameID,
-            VibrationSettings vibrationSettings, LightSettings lightSettings) {
+    public NotificationConf(int defaultActionImage, VibrationSettings vibrationSettings,
+            LightSettings lightSettings) {
         this.defaultActionImage = defaultActionImage;
         this.sameID = sameID;
         this.vibrationSettings = vibrationSettings;
@@ -40,6 +34,11 @@ public class NotificationConf {
 
     public boolean isSameID() {
         return sameID;
+    }
+
+    public NotificationConf setSameID(boolean sameID) {
+        this.sameID = sameID;
+        return this;
     }
 
     public VibrationSettings getVibrationSettings() {
