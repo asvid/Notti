@@ -1,7 +1,7 @@
-# Notifications Engine 
-[![Build Status](https://travis-ci.org/asvid/NotificationsEngine.svg?branch=master)](https://travis-ci.org/asvid/NotificationsEngine)
-[![](https://jitpack.io/v/asvid/NotificationsEngine.svg)](https://jitpack.io/#asvid/NotificationsEngine) 
-<a href="http://www.methodscount.com/?lib=com.github.asvid%3ANotificationsEngine%3A0.0.5"><img src="https://img.shields.io/badge/Methods and size-49 | 7 KB-e91e63.svg"/></a>
+# Notti 
+[![Build Status](https://travis-ci.org/asvid/Notti.svg?branch=master)](https://travis-ci.org/asvid/Notti)
+[![](https://jitpack.io/v/asvid/Notti.svg)](https://jitpack.io/#asvid/Notti)
+<a href="http://www.methodscount.com/?lib=com.github.asvid%3ANotti%3A0.0.5"><img src="https://img.shields.io/badge/Methods and size-49 | 7 KB-e91e63.svg"/></a>
 
 
 Simple library for making quick notifications. After initialisation with config, all notifications will be displayed with same icon, light and vibrations unless you state different for specific notification. 
@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.asvid:NotificationsEngine:0.0.5'
+    compile 'com.github.asvid:Notti:0.0.5'
 }
 ```
 # Examples
@@ -27,22 +27,22 @@ dependencies {
 ```java
 public class MainActivity extends AppCompatActivity {
 
-    private NotificationsEngine notificationsEngine;
+    private Notti notti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        notificationsEngine = new NotificationsEngine(this,
-                                              new NotificationConf(R.drawable.ic_stat_name));
+        notti = new Notti(this,
+                                              new NottiConf(R.drawable.ic_stat_name));
 
-        notificationsEngine.show(NotificationsFactory.get(NotificationsFactory.TYPE.STANDARD,
+        notti.show(NottiFactory.get(NottiFactory.TYPE.STANDARD,
                                               "some text", 
                                               "some content"));
     }
 }
 ```
-## NotificationConf options
+## NottiConf options
 ```java
 long[] pattern = {100, 200, 100, 200};
 boolean shouldVibrate = true;
@@ -57,8 +57,8 @@ LightSettings lightSettings = new LightSettings(argb, onMs, offMs);
 //  or simply
 LightSettings lightSettings = new LightSettings(Color.BLUE); 
 
-notificationsEngine = new NotificationsEngine(this,
-        new NotificationConf(R.drawable.ic_stat_name, vibrationSettings, lightSettings).setSameID(false));
+notti = new Notti(this,
+        new NottiConf(R.drawable.ic_stat_name, vibrationSettings, lightSettings).setSameID(false));
 ```
 
 
@@ -69,16 +69,16 @@ List<NotificationAction> actionsList = Arrays.asList(
                                                     new NotificationAction("action 2", intent, this));
 
 
-notificationsEngine.show(NotificationsFactory
-                .get(NotificationsFactory.TYPE.STANDARD, "some text", "some content")
+notti.show(NottiFactory
+                .get(NottiFactory.TYPE.STANDARD, "some text", "some content")
                 .setContentAction(new ContentAction(new Intent(this, MainActivity.class), this))
                 .setActions(actionsList));
 ```
 ### Using PendingIntents
 ```java
 
-notificationsEngine.show(NotificationsFactory
-                .get(NotificationsFactory.TYPE.STANDARD, "some text", "some content")
+notti.show(NottiFactory
+                .get(NottiFactory.TYPE.STANDARD, "some text", "some content")
                 .setContentAction(new ContentAction(PendingIntent.getService(context, 0, intent, 0))));
 ```
 
