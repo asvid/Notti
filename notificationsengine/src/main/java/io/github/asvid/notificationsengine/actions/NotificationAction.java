@@ -1,4 +1,4 @@
-package io.github.asvid.notificationsengine;
+package io.github.asvid.notificationsengine.actions;
 
 import android.app.PendingIntent;
 import android.content.Context;

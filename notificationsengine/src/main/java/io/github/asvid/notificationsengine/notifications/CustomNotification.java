@@ -5,9 +5,10 @@ import android.support.v4.app.NotificationCompat;
 
 import java.util.List;
 
-import io.github.asvid.notificationsengine.ContentAction;
-import io.github.asvid.notificationsengine.NotificationAction;
-import io.github.asvid.notificationsengine.NotificationConf;
+import io.github.asvid.notificationsengine.actions.ContentAction;
+import io.github.asvid.notificationsengine.actions.NotificationAction;
+import io.github.asvid.notificationsengine.config.LightSettings;
+import io.github.asvid.notificationsengine.config.VibrationSettings;
 
 /**
  * Created by adam on 29.06.16.
@@ -48,7 +49,11 @@ public interface CustomNotification {
 
     long[] getVibrationPattern();
 
-    NotificationConf.LightSettings getLightSettings();
+    LightSettings getLightSettings();
 
-    CustomNotification setLightSettings(NotificationConf.LightSettings lightSettings);
+    CustomNotification setLightSettings(LightSettings lightSettings);
+
+    CustomNotification setVibrationSettings(VibrationSettings vibrations);
+
+    VibrationSettings getVibrationSettings();
 }

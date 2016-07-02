@@ -5,9 +5,10 @@ import android.graphics.Bitmap;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.asvid.notificationsengine.ContentAction;
-import io.github.asvid.notificationsengine.NotificationAction;
-import io.github.asvid.notificationsengine.NotificationConf;
+import io.github.asvid.notificationsengine.actions.ContentAction;
+import io.github.asvid.notificationsengine.actions.NotificationAction;
+import io.github.asvid.notificationsengine.config.LightSettings;
+import io.github.asvid.notificationsengine.config.VibrationSettings;
 
 /**
  * Created by adam on 29.06.16.
@@ -26,7 +27,8 @@ public abstract class BaseNotification implements CustomNotification {
     public List<String> inboxItems = new ArrayList<>();
     public String inboxSummary;
     public long[] vibrationPattern;
-    public NotificationConf.LightSettings lightSettings;
+    public LightSettings lightSettings;
+    public VibrationSettings vibrationSettings;
 
     @Override
     public CustomNotification setTitle(String title) {
@@ -122,13 +124,24 @@ public abstract class BaseNotification implements CustomNotification {
     }
 
     @Override
-    public NotificationConf.LightSettings getLightSettings() {
+    public LightSettings getLightSettings() {
         return lightSettings;
     }
 
     @Override
-    public CustomNotification setLightSettings(NotificationConf.LightSettings lightSettings) {
+    public CustomNotification setLightSettings(LightSettings lightSettings) {
         this.lightSettings = lightSettings;
+        return this;
+    }
+
+    @Override
+    public VibrationSettings getVibrationSettings() {
+        return vibrationSettings;
+    }
+
+    @Override
+    public CustomNotification setVibrationSettings(VibrationSettings vibrationSettings) {
+        this.vibrationSettings = vibrationSettings;
         return this;
     }
 }
