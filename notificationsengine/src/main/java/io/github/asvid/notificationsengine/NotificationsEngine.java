@@ -7,6 +7,10 @@ import android.support.v4.app.NotificationCompat;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.github.asvid.notificationsengine.actions.NotificationAction;
+import io.github.asvid.notificationsengine.config.LightSettings;
+import io.github.asvid.notificationsengine.config.NotificationConf;
+import io.github.asvid.notificationsengine.config.VibrationSettings;
 import io.github.asvid.notificationsengine.notifications.CustomNotification;
 
 /**
@@ -33,7 +37,33 @@ public class NotificationsEngine {
         customNotification.setBuilder(builder);
         setActionsForNotification(builder, customNotification);
         setContentIntent(customNotification, builder);
+        setDiode(customNotification, builder);
+        setVibrations(customNotification, builder);
         notificationManager.notify(getNotificationID(), builder.build());
+    }
+
+    private void setVibrations(CustomNotification customNotification,
+            NotificationCompat.Builder builder) {
+        VibrationSettings vibrationSettings = notificationConf.getVibrationSettings();
+        VibrationSettings customVibrationSettings = customNotification.getVibrationSettings();
+        if (vibrationSettings != null && vibrationSettings.isVibrate()) {
+            builder.setVibrate(vibrationSettings.getPattern());
+        } else if (customVibrationSettings != null && customVibrationSettings.isVibrate()) {
+            builder.setVibrate(customVibrationSettings.getPattern());
+        }
+    }
+
+    private void setDiode(CustomNotification customNotification,
+            NotificationCompat.Builder builder) {
+        LightSettings lightSettings = notificationConf.getLightSettings();
+        LightSettings customLightSettings = customNotification.getLightSettings();
+        if (lightSettings != null) {
+            builder.setLights(lightSettings.getArgb(), lightSettings.getOnMs(),
+                    lightSettings.getOffMs());
+        } else if (customLightSettings != null) {
+            builder.setLights(customLightSettings.getArgb(), customLightSettings.getOnMs(),
+                    customLightSettings.getOffMs());
+        }
     }
 
     private void setContentIntent(CustomNotification customNotification,

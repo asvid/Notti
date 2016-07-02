@@ -5,8 +5,10 @@ import android.graphics.Bitmap;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.asvid.notificationsengine.ContentAction;
-import io.github.asvid.notificationsengine.NotificationAction;
+import io.github.asvid.notificationsengine.actions.ContentAction;
+import io.github.asvid.notificationsengine.actions.NotificationAction;
+import io.github.asvid.notificationsengine.config.LightSettings;
+import io.github.asvid.notificationsengine.config.VibrationSettings;
 
 /**
  * Created by adam on 29.06.16.
@@ -24,6 +26,9 @@ public abstract class BaseNotification implements CustomNotification {
     public Bitmap largeImage;
     public List<String> inboxItems = new ArrayList<>();
     public String inboxSummary;
+    public long[] vibrationPattern;
+    public LightSettings lightSettings;
+    public VibrationSettings vibrationSettings;
 
     @Override
     public CustomNotification setTitle(String title) {
@@ -105,5 +110,38 @@ public abstract class BaseNotification implements CustomNotification {
     @Override
     public ContentAction getContentAction() {
         return contentAction;
+    }
+
+    @Override
+    public CustomNotification setVibrationPattern(long[] pattern) {
+        this.vibrationPattern = pattern;
+        return this;
+    }
+
+    @Override
+    public long[] getVibrationPattern() {
+        return vibrationPattern;
+    }
+
+    @Override
+    public LightSettings getLightSettings() {
+        return lightSettings;
+    }
+
+    @Override
+    public CustomNotification setLightSettings(LightSettings lightSettings) {
+        this.lightSettings = lightSettings;
+        return this;
+    }
+
+    @Override
+    public VibrationSettings getVibrationSettings() {
+        return vibrationSettings;
+    }
+
+    @Override
+    public CustomNotification setVibrationSettings(VibrationSettings vibrationSettings) {
+        this.vibrationSettings = vibrationSettings;
+        return this;
     }
 }
