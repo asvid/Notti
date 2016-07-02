@@ -12,10 +12,10 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.github.asvid.notificationsengine.actions.ContentAction;
-import io.github.asvid.notificationsengine.actions.NotificationAction;
 import io.github.asvid.notificationsengine.NotificationsEngine;
 import io.github.asvid.notificationsengine.NotificationsFactory;
+import io.github.asvid.notificationsengine.actions.ContentAction;
+import io.github.asvid.notificationsengine.actions.NotificationAction;
 import io.github.asvid.notificationsengine.config.LightSettings;
 import io.github.asvid.notificationsengine.config.NotificationConf;
 import io.github.asvid.notificationsengine.config.VibrationSettings;
@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         notificationsEngine = new NotificationsEngine(this,
                 new NotificationConf(R.drawable.ic_stat_name, false,
-                        VibrationSettings.STD_VIBRATION, new LightSettings(Color.BLUE)));
+                        new VibrationSettings(VibrationSettings.STD_VIBRATION),
+                        new LightSettings(Color.BLUE)));
     }
 
     @OnClick(R.id.simpleNotification)
