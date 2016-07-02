@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.asvid:Notti:0.0.5'
+    compile 'com.github.asvid:Notti:0.0.6'
 }
 ```
 # Examples
