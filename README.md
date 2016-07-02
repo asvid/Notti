@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        notti = new Notti(this,
-                                              new NottiConf(R.drawable.ic_stat_name));
+        notti = new Notti(this, new NottiConf(R.drawable.ic_stat_name));
 
         notti.show(NottiFactory.get(NottiFactory.TYPE.STANDARD,
                                               "some text", 
