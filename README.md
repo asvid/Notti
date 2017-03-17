@@ -1,6 +1,7 @@
 # Notti 
 [![Build Status](https://travis-ci.org/asvid/Notti.svg?branch=master)](https://travis-ci.org/asvid/Notti)
 [![](https://jitpack.io/v/asvid/Notti.svg)](https://jitpack.io/#asvid/Notti)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Notti-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4930)
 
 Simple library for making quick notifications. After initialisation with config, all notifications will be displayed with same icon, light and vibrations unless you state different for specific notification. 
 Every type of notification has same configurable options including vibrations, light settings, icon etc. For details please check usage examples.
