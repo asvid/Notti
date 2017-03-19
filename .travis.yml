@@ -1,5 +1,7 @@
-sudo: false
+sudo: true
+cache: false
 language: android
+jdk: oraclejdk8
 
 env:
   global:
@@ -9,8 +11,10 @@ android:
   components:
     - tools
     - platform-tools
-    - build-tools-23.0.2
-    - android-23
+    - build-tools-25.0.0
+    - android-25
+    - extra-google-google_play_services
+    - extra-android-support
     - extra-google-m2repository
     - extra-android-m2repository
 
