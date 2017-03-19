@@ -1,56 +1,56 @@
 buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
-    }
-
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+  }
 }
 
-group = 'com.github.asvid.notificationsengine'
-version = '0.0.2'
+group = 'com.github.asvid.notti'
+version = '0.0.5'
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.github.kt3k.coveralls'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+  compileSdkVersion 25
+  buildToolsVersion "25.0.0"
 
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+  defaultConfig {
+    minSdkVersion 16
+    targetSdkVersion 25
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            testCoverageEnabled true
-        }
+    debug {
+      testCoverageEnabled true
     }
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
+  }
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  testCompile 'junit:junit:4.12'
+  compile 'com.android.support:appcompat-v7:25.3.0'
 }
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 coveralls {
-    jacocoReportPath = "${buildDir}/reports/coverage/debug/report.xml"
+  jacocoReportPath = "${buildDir}/reports/coverage/debug/report.xml"
 }
 
 tasks.coveralls {
-    dependsOn 'connectedAndroidTest'
-    onlyIf { System.env.'CI' }
+  dependsOn 'connectedAndroidTest'
+  onlyIf { System.env.'CI' }
 }
